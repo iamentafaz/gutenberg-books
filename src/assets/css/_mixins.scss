@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@mixin Rectangle {
+  width: 114px;
+  height: 162px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+}
+
+@mixin heading1 {
+  font-size: 48px;
+  font-family: var(--font-1);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@mixin GenreCard {
+  font-size: 20px;
+  border-radius: 4px;
+  padding: 0 10px;
+  height: 50px;
+  box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+  background-color: #ffffff;
+}

@@ -1,0 +1,51 @@
+<div class="book-main-container">
+  <div class="main-inner">
+    <div class="book-page-title-container">
+      <div class="backIcon">
+        <img
+          src="../../../assets/images/Back.svg"
+          alt=""
+          (click)="backToHome()"
+        />
+      </div>
+      <h2 class="page-title">
+        {{ pageTitle }}
+      </h2>
+    </div>
+    <div class="searchBox">
+      <div
+        class="searchInputContainer"
+        [ngClass]="{ border: this.inputBorder }"
+      >
+        <img src="../../../assets/images/Search.svg" alt="Search" />
+        <input
+          type="text"
+          placeholder="Search"
+          [formControl]="searchString"
+          (focus)="addRemoveBorder(true)"
+          (focusout)="addRemoveBorder(false)"
+        />
+        <img
+          src="../../../assets/images/Cancel.svg"
+          alt="Cancel"
+          *ngIf="showCross"
+          (click)="emptySearch()"
+        />
+      </div>
+    </div>
+    <div class="listBackground">
+      <div class="book-list-container">
+        <div class="book-container" *ngFor="let book of books">
+          <div
+            class="book-image-container"
+            style="
+              background-image: url('{{ book.formats['image/jpeg'] }}');
+            "
+          ></div>
+          <p class="book-title">{{ book.title }}</p>
+          <p class="book-author">{{ book.authors[0]?.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

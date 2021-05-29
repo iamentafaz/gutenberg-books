@@ -1,0 +1,59 @@
+@import "../../../assets/css/mixins";
+
+.home-main-container {
+  background-image: url("../../../assets/images/Pattern.svg");
+  height: 100vh;
+  background-color: var(--color-secondary);
+  > .home-inner-container {
+    max-width: 960px;
+    margin: auto;
+    padding: 20px 15px;
+  }
+  .home-title {
+    @include heading1();
+  }
+
+  .home-sub-title {
+    font-family: var(--font-1);
+    font-weight: 510;
+    margin-top: 20px;
+    line-height: 20px;
+    margin-bottom: 30px;
+  }
+}
+.book-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  // display: block;
+}
+.book-card {
+  @include GenreCard();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  .card-title-icon {
+    display: flex;
+    grid-column-gap: 10px;
+    align-items: center;
+  }
+  .book-type {
+    font-family: var(--font-1);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .book-icon {
+    height: 24px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .home-main-container {
+    height: auto;
+  }
+  .book-card-container {
+    display: block;
+  }
+}

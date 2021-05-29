@@ -1,0 +1,101 @@
+<div class="home-main-container">
+  <div class="home-inner-container">
+    <h1 class="home-title">Gutenberg Project</h1>
+    <p class="home-sub-title">
+      A social cataloging website that allows you to freely search its database
+      of books, annotations, and reviews.
+    </p>
+    <div class="book-card-container">
+      <div class="column-1">
+        <div class="book-card" (click)="goToBooks('fiction')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img src="../../../assets/images/Fiction.svg" class="book-icon" />
+            </div>
+            <p class="book-type">FICTION</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+        <div class="book-card" (click)="goToBooks('drama')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img src="../../../assets/images/Drama.svg" class="book-icon" />
+            </div>
+            <p class="book-type">DRAMA</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+        <div class="book-card" (click)="goToBooks('humor')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img src="../../../assets/images/Humour.svg" class="book-icon" />
+            </div>
+            <p class="book-type">HUMOR</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+        <div class="book-card" (click)="goToBooks('politics')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img
+                src="../../../assets/images/Politics.svg"
+                class="book-icon"
+              />
+            </div>
+            <p class="book-type">POLITICS</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+      </div>
+      <div class="column-2">
+        <div class="book-card" (click)="goToBooks('philosophy')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img
+                src="../../../assets/images/Philosophy.svg"
+                class="book-icon"
+              />
+            </div>
+            <p class="book-type">PHILOSOPHY</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+        <div class="book-card" (click)="goToBooks('history')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img src="../../../assets/images/History.svg" class="book-icon" />
+            </div>
+            <p class="book-type">History</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+        <div class="book-card" (click)="goToBooks('adventure')">
+          <div class="card-title-icon">
+            <div class="card-icon">
+              <img
+                src="../../../assets/images/Adventure.svg"
+                class="book-icon"
+              />
+            </div>
+            <p class="book-type">ADVENTURE</p>
+          </div>
+          <div class="card-forward-icon">
+            <img src="../../../assets/images/Next.svg" class="next-icon" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
