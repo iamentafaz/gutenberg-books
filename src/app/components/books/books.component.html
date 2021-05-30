@@ -24,27 +24,37 @@
           [formControl]="searchString"
           (focus)="addRemoveBorder(true)"
           (focusout)="addRemoveBorder(false)"
+          (keyup.enter)="searchBooks()"
         />
         <img
           src="../../../assets/images/Cancel.svg"
           alt="Cancel"
+          class="cancel"
           *ngIf="showCross"
           (click)="emptySearch()"
         />
       </div>
     </div>
     <div class="listBackground">
-      <div class="book-list-container">
+      <div
+        class="book-list-container search-results"
+        infinite-scroll
+        [infiniteScrollDistance]="1"
+        [infiniteScrollThrottle]="20"
+        [scrollWindow]="false"
+        (scrolled)="onScroll()"
+      >
         <div class="book-container" *ngFor="let book of books">
           <div
             class="book-image-container"
             style="
               background-image: url('{{ book.formats['image/jpeg'] }}');
-            "
+              "
           ></div>
           <p class="book-title">{{ book.title }}</p>
           <p class="book-author">{{ book.authors[0]?.name }}</p>
         </div>
+        <div *ngIf="fetchingData" class="loader">Loading books....</div>
       </div>
     </div>
   </div>

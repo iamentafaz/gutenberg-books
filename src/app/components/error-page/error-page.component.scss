@@ -1,0 +1,10 @@
+.error-page {
+    display: flex;
+    justify-content: center;
+    margin: 10vw 0;
+    a {
+        color: var(--color-primary);
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

@@ -15,7 +15,9 @@ export class BooksComponent implements OnInit {
   searchString = new FormControl('');
   showCross = false;
   inputBorder = false;
-  baseUrl = `http://skunkworks.ignitesol.com:8000/books/`;
+  baseUrl = `http://skunkworks.ignitesol.com:8000/books/?mime_type=image`;
+  nextUrl = ``;
+  fetchingData = true;
 
   constructor(
     private http: HttpClient,
@@ -30,7 +32,6 @@ export class BooksComponent implements OnInit {
     this.searchString.valueChanges.subscribe((value) => {
       if (value) {
         this.showCross = true;
-        console.log(this.showCross);
       } else {
         this.showCross = false;
       }
@@ -38,17 +39,42 @@ export class BooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBooks(this.baseUrl);
+    this.getBooks(`${this.baseUrl}&topic=${this.pageTitle}`);
   }
 
-  getBooks(url: string) {
+  getBooks(url: string, scrolled?: boolean) {
+    this.fetchingData = true;
     this.http.get(url, {}).subscribe(
       (response: any) => {
         console.log(response);
-        this.books = response.results;
+        this.nextUrl = response.next;
+        this.fetchingData = false;
+
+        if (response.results.length) {
+          if (this.books.length) {
+            this.books = this.books.concat(response.results);
+          } else {
+            this.books = response.results;
+          }
+        } else {
+          alert(
+            `No books found with category ${this.pageTitle}${
+              this.searchString.value
+                ? ` and named ${this.searchString.value}`
+                : ''
+            }`
+          );
+        }
       },
-      (err) => {
+      (err: any) => {
         console.log(err);
+        this.fetchingData = false;
+
+        if (scrolled) {
+          alert(`Unable to fetch more books with category ${this.pageTitle}`);
+        } else {
+          alert(`Unable to fetch book with category ${this.pageTitle}`);
+        }
       }
     );
   }
@@ -61,5 +87,21 @@ export class BooksComponent implements OnInit {
   }
   addRemoveBorder(focused: boolean) {
     this.inputBorder = focused;
+  }
+  onScroll() {
+    if (this.nextUrl) {
+      this.getBooks(this.nextUrl, true);
+    }
+  }
+
+  searchBooks() {
+    this.books = [];
+    if (this.searchString.value) {
+      this.getBooks(
+        `${this.baseUrl}&topic=${this.pageTitle}&search=${this.searchString.value}`
+      );
+    } else {
+      this.getBooks(`${this.baseUrl}&topic=${this.pageTitle}`);
+    }
   }
 }
